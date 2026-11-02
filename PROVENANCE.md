@@ -1,0 +1,44 @@
+# Provenance
+
+The two Python files were copied from Mamadou's existing PyTorch learning
+folder on 2 November 2026. Their earlier authorship, tutorial sources and
+independent implementation history have not been verified.
+
+Codex prepared this copy and authored the README, dependency list, ignore rules
+and this provenance note. In `cifar10_cnn.py`, Codex added a status docstring,
+removed an unused import, adjusted spacing and redundant parentheses, and moved
+the smoke-check input to the model's selected device. The device fix addresses
+a runtime mismatch reproduced on CUDA in the original file.
+
+Following Mamadou's explicit request to reuse the MLP training loop, Codex
+adapted `train_loop` from his existing `kminst_mlp.py` into the shared
+`train.py`. Codex added example-weighted metrics, deterministic
+seeding, validation-based checkpoint selection, final test evaluation, plots,
+CLI options and tests. Gradient clearing is performed before each forward pass;
+the original MLP clears after each optimiser step. Both implement the same
+gradient-reset cycle when starting with no accumulated gradients.
+
+The CIFAR loader now accepts a shuffle seed and download flag; the 45,000/5,000
+split and split seed remain unchanged. The model architecture, preprocessing,
+SGD learning rate, momentum and weight decay are unchanged. A five-epoch
+check was selected to verify the workflow, followed by the MLP script's original
+20-epoch schedule. The five-epoch record is retained; neither run is an
+optimisation claim. Measured results are recorded separately after execution. Original source
+files outside this repository were left unchanged.
+
+Mamadou should still confirm earlier authorship and external source references.
+The standalone release uses MIT with the retained upstream BSD notice below.
+
+## Standalone extraction
+
+Extracted on 2 November 2026 from portfolio commit `6ad431f`.
+Model definitions, data splits, optimisation and metric calculations are preserved.
+Codex changed file paths and the CLI to run this dataset directly with `train.py`,
+removed the dependency on the other project and set the default budget to 20 epochs.
+Published metrics and curves were copied byte-for-byte from the recorded run.
+The MIT licence was added at Mamadou's explicit request, with upstream PyTorch
+BSD notices retained separately. Dataset rights remain with their providers.
+
+Training-loop reference and retained upstream BSD notice: see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The MIT licence does not
+relicense upstream code or the downloaded datasets.

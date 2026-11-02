@@ -1,0 +1,99 @@
+{
+  "dataset": "cifar10",
+  "seed": 42,
+  "split_seed": 42,
+  "epochs": 5,
+  "batch_size": 64,
+  "split_sizes": {
+    "train": 45000,
+    "validation": 5000,
+    "test": 10000
+  },
+  "optimizer": {
+    "name": "SGD",
+    "lr": 0.1,
+    "momentum": 0.9,
+    "weight_decay": 0.0005
+  },
+  "model_parameters": 30634,
+  "torch_version": "2.14.0+cu126",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "deterministic_algorithms": true,
+  "cpu_threads": 4,
+  "selection": "lowest validation cross-entropy; first epoch wins exact ties",
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 1.7549924329969617,
+        "accuracy_percent": 37.15777777777778,
+        "examples": 45000
+      },
+      "validation": {
+        "loss": 2.04079852104187,
+        "accuracy_percent": 35.78,
+        "examples": 5000
+      }
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 1.62278334558275,
+        "accuracy_percent": 42.324444444444445,
+        "examples": 45000
+      },
+      "validation": {
+        "loss": 1.5954092063903809,
+        "accuracy_percent": 43.42,
+        "examples": 5000
+      }
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 1.5727832867516411,
+        "accuracy_percent": 44.19111111111111,
+        "examples": 45000
+      },
+      "validation": {
+        "loss": 1.6922160034179687,
+        "accuracy_percent": 41.42,
+        "examples": 5000
+      }
+    },
+    {
+      "epoch": 4,
+      "train": {
+        "loss": 1.5370607858233982,
+        "accuracy_percent": 45.87777777777778,
+        "examples": 45000
+      },
+      "validation": {
+        "loss": 1.6731387619018554,
+        "accuracy_percent": 43.2,
+        "examples": 5000
+      }
+    },
+    {
+      "epoch": 5,
+      "train": {
+        "loss": 1.5091649244732326,
+        "accuracy_percent": 46.946666666666665,
+        "examples": 45000
+      },
+      "validation": {
+        "loss": 1.5986480598449706,
+        "accuracy_percent": 42.6,
+        "examples": 5000
+      }
+    }
+  ],
+  "best_epoch": 2,
+  "test": {
+    "loss": 1.5863397424697876,
+    "accuracy_percent": 43.45,
+    "examples": 10000
+  },
+  "elapsed_seconds": 38.89429430000018
+}
