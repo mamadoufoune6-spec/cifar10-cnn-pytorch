@@ -4,6 +4,28 @@ A small PyTorch image classifier with an end-to-end training, validation and
 test workflow. Its training loop is adapted from Mamadou's existing KMNIST MLP
 exercise; the original CNN architecture and optimiser settings are preserved.
 
+## Results
+
+The recorded **20-epoch, seed-42** CIFAR-10 run selected **epoch 11** by
+lowest validation cross-entropy. The held-out test set was evaluated after
+restoring that checkpoint; test accuracy was not used for selection.
+
+| Metric | Recorded result |
+|---|---:|
+| Validation accuracy at selected checkpoint | **50.22%** |
+| Held-out test accuracy (10,000 images) | **50.43%** |
+| Validation cross-entropy | 1.4436 |
+| Held-out test cross-entropy | 1.4374 |
+| Training budget / selected epoch | 20 / 11 |
+| Training and split seed | 42 |
+| Batch size | 64 |
+| Trainable parameters | 30,634 |
+
+![Recorded CIFAR-10 training and validation curves](results/curves.png)
+
+[Full epoch history and run settings](results/metrics.json).
+These are single-seed learning results, not a tuned benchmark or a claim of convergence.
+
 ## Status and provenance
 
 The runnable learning workflow includes seeded data loading, epoch metrics,
@@ -54,20 +76,7 @@ python -B -m unittest discover -s tests -v
 
 Dataset source: https://www.cs.toronto.edu/~kriz/cifar.html
 
-## Results and limitations
-
-The measured 20-epoch, seed-42 baseline selected epoch 11 by validation loss:
-
-| Metric | Measured result |
-|---|---:|
-| Validation accuracy at selected epoch | 50.22% |
-| Held-out test accuracy (10,000 images) | 50.43% |
-| Held-out test cross-entropy | 1.4374 |
-| Trainable parameters | 30,634 |
-
-Full history and conditions: [metrics.json](results/metrics.json).
-
-![Measured training and validation curves](results/curves.png)
+## Limitations
 
 The earlier five-epoch workflow check is preserved in
 [five_epoch_check.json](results/five_epoch_check.json): 43.45% test accuracy.

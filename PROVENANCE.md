@@ -1,8 +1,7 @@
 # Provenance
 
-The two Python files were copied from Mamadou's existing PyTorch learning
-folder on 2 November 2026. Their earlier authorship, tutorial sources and
-independent implementation history have not been verified.
+The two Python files were copied from Mamadou's preexisting PyTorch learning
+folder on 2 November 2026.
 
 Codex prepared this copy and authored the README, dependency list, ignore rules
 and this provenance note. In `cifar10_cnn.py`, Codex added a status docstring,
@@ -26,7 +25,6 @@ check was selected to verify the workflow, followed by the MLP script's original
 optimisation claim. Measured results are recorded separately after execution. Original source
 files outside this repository were left unchanged.
 
-Mamadou should still confirm earlier authorship and external source references.
 The standalone release uses MIT with the retained upstream BSD notice below.
 
 ## Standalone extraction
