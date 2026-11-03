@@ -46,3 +46,20 @@ rights remain with their respective providers.
 Learning references and dependency/dataset notices: see
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The MIT licence does not
 relicense the dependencies or downloaded datasets.
+
+## Engineering review, 3 November 2026
+
+At Mamadou's request, Codex authored the standalone `evaluate.py`, dataset-free
+GitHub Actions workflow, additional checkpoint/preprocessing regression tests,
+direct dependency version pins and tested-environment record, and the associated
+README updates. The evaluator loads one explicitly supplied checkpoint without
+training or checkpoint selection. Formatting changes are limited to the new
+engineering code and tests.
+
+All 10 dataset-free tests passed locally. CPU and CUDA evaluation of the existing
+epoch-11 checkpoint both reproduced 50.22% validation and 50.43% test accuracy;
+cross-entropy agreed with the original record within 0.000001. No confirmed bug
+requiring a training-workflow change was found. The original model, data loader,
+trainer, 20-epoch metrics/curves and five-epoch record were left byte-for-byte
+unchanged. Local verification used an existing environment; a fresh local
+installation was not tested. CI verification is reported separately by Actions.

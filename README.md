@@ -55,7 +55,7 @@ See [PROVENANCE.md](PROVENANCE.md) for Codex-assisted implementation details.
 
 ## Reproduce
 
-From the **repository root**, using Python 3.10+ and compatible dependencies:
+From the **repository root**, using Python 3.12 (the tested version):
 
 ```powershell
 python -m venv .venv
@@ -66,7 +66,11 @@ python -m venv .venv
 CUDA is selected when available; `--device cpu` forces CPU. CUDA needs a
 compatible PyTorch build. The dataset downloads to `./data` if necessary;
 `--data-root PATH --no-download` uses an existing cache without network access.
-The dependency file is minimal rather than a fully locked environment.
+`requirements.txt` pins the tested direct dependency versions; it is not a
+complete transitive lock file. [TESTED_ENVIRONMENT.json](TESTED_ENVIRONMENT.json)
+records the existing Windows environment used for local verification. A fresh
+installation has not been verified locally. CPU/CUDA wheel selection is separate;
+see the [official PyTorch installation commands](https://pytorch.org/get-started/previous-versions/).
 
 Artifacts go to `outputs/cifar10-seed42/`: `metrics.json`, `curves.png`,
 `best.pt` and `last.pt`. Use `--output-dir PATH` for another run; a nonempty
@@ -74,9 +78,37 @@ output directory is rejected to preserve existing results. Weights and data
 are ignored by Git. Checkpoints include model/optimiser state, epoch and seed;
 automatic resume is not implemented.
 
+### Evaluate an existing checkpoint
+
+```powershell
+python evaluate.py --checkpoint outputs/cifar10-seed42/best.pt --data-root data --device cpu --output evaluation.json
+```
+
+This standalone command strictly loads the one supplied checkpoint, uses the
+same split and preprocessing as training, and reports validation/test metrics
+and the checkpoint SHA-256. It does not train or choose a checkpoint. Data must
+already be cached unless `--download` is supplied. The optional output path must
+not exist. Weights are not hosted here; supply your saved checkpoint or first
+run the training command above.
+
+On 3 November 2026, evaluating the existing epoch-11 checkpoint on both CPU and
+CUDA reproduced **50.22% validation / 50.43% test accuracy**. Cross-entropy
+matched the recorded values within 0.000001. No change to the experimental
+workflow was required; the original results and curves remain unchanged.
+
+### Dataset-free tests
+
 ```powershell
 python -B -m unittest discover -s tests -v
 ```
+
+All 10 tests passed locally in the recorded environment. They cover weighted
+metrics, unchanged evaluation weights, preprocessing and labels, strict checkpoint
+loading, and selection using validation loss rather than the last epoch or test
+accuracy. Synthetic inputs and mocked datasets avoid CIFAR-10 downloads.
+The [GitHub Actions workflow](.github/workflows/tests.yml) runs these tests with
+Python 3.12 and CPU-only PyTorch on Linux; it does not run the 20-epoch experiment.
+Its status is separate from the local verification reported here.
 
 Dataset source: https://www.cs.toronto.edu/~kriz/cifar.html
 

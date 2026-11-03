@@ -1,0 +1,25 @@
+{
+  "verified_on": "2026-11-03",
+  "platform": "Windows",
+  "python": "3.12.10",
+  "packages": {
+    "torch": "2.14.0+cu126",
+    "torchvision": "0.29.0+cu126",
+    "numpy": "2.2.6",
+    "matplotlib": "3.10.9"
+  },
+  "cuda_runtime": "12.6",
+  "cudnn": 91002,
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "verification": {
+    "dataset_free_tests_passed": 10,
+    "existing_checkpoint_evaluated_on": [
+      "cpu",
+      "cuda"
+    ],
+    "fresh_local_install_verified": false,
+    "ci": "Separate Linux CPU-only installation and test job; consult the Actions run for its outcome."
+  },
+  "checkpoint_sha256": "cab61799f3fc51a176ca67ea04434b25e0f7e0bf333a781cf4f5e4094892696b",
+  "dependency_scope": "Direct dependency pins, not a complete transitive lock. CPU/CUDA build selection is separate."
+}
