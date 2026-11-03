@@ -4,6 +4,10 @@ A small PyTorch image classifier with an end-to-end training, validation and
 test workflow. Its training loop is adapted from Mamadou's existing KMNIST MLP
 exercise; the original CNN architecture and optimiser settings are preserved.
 
+The original model was implemented by Mamadou from theory learned through
+PyTorch documentation, Medium articles and Lilian Weng's writing. Later
+AI-assisted engineering changes are documented in [PROVENANCE.md](PROVENANCE.md).
+
 ## Results
 
 The recorded **20-epoch, seed-42** CIFAR-10 run selected **epoch 11** by
@@ -88,7 +92,7 @@ while parameters change within an epoch. Deterministic settings improve repeatab
 on the recorded environment; identical results across hardware/versions are not
 guaranteed. No hyperparameter sweep or architectural comparison is claimed.
 
-Earlier source attribution still needs Mamadou's review. Code is licensed under [MIT](LICENSE); see [third-party notices](THIRD_PARTY_NOTICES.md).
+Code is licensed under [MIT](LICENSE); see [third-party notices](THIRD_PARTY_NOTICES.md).
 
 
 ## Repository history

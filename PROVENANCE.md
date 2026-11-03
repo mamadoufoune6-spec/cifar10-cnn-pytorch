@@ -1,5 +1,10 @@
 # Provenance
 
+Mamadou implemented the original models and MLP training loop after studying
+the theory through PyTorch documentation, Medium articles and Lilian Weng's
+writing. These were implementations built from that understanding. Later Codex
+engineering changes are recorded separately below.
+
 The two Python files were copied from Mamadou's preexisting PyTorch learning
 folder on 2 November 2026.
 
@@ -25,7 +30,8 @@ check was selected to verify the workflow, followed by the MLP script's original
 optimisation claim. Measured results are recorded separately after execution. Original source
 files outside this repository were left unchanged.
 
-The standalone release uses MIT with the retained upstream BSD notice below.
+The standalone release uses MIT; dependency and dataset terms are described in
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Standalone extraction
 
@@ -34,9 +40,9 @@ Model definitions, data splits, optimisation and metric calculations are preserv
 Codex changed file paths and the CLI to run this dataset directly with `train.py`,
 removed the dependency on the other project and set the default budget to 20 epochs.
 Published metrics and curves were copied byte-for-byte from the recorded run.
-The MIT licence was added at Mamadou's explicit request, with upstream PyTorch
-BSD notices retained separately. Dataset rights remain with their providers.
+The MIT licence was added at Mamadou's explicit request. Dependency and dataset
+rights remain with their respective providers.
 
-Training-loop reference and retained upstream BSD notice: see
+Learning references and dependency/dataset notices: see
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The MIT licence does not
-relicense upstream code or the downloaded datasets.
+relicense the dependencies or downloaded datasets.
